@@ -1,0 +1,82 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: rgba(255, 192, 203, 0.705);
+}
+*{
+    box-sizing: border-box;
+}
+.main_container{
+    width: 40%;
+    padding: 15px;
+    transform: translate(100%, 50%);
+}
+.form{
+    background-attachment: white;
+    margin-top: 150px;
+    padding: 3px;
+}
+.form h1{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+
+}
+input[type="text"],input[type="password"]{
+    font-size: 20px;
+    width: 60%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    /* background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid white;
+    padding: 8px 45px;
+    outline: none;
+    color: white;
+    border-radius: 8px;
+    transition: 0.50s;
+    cursor: pointer; */
+}
+
+input[type="submit"]{
+    border: none;
+    width: 60%;
+    color: white;
+    font-size: 20px;
+    padding: 15px 20px;
+    background-color: rgb(255, 192, 203);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.box input[type="submit"]:hover{
+    background-color: white;
+    color: pink;
+}
+
+.fa-user-lock{
+    color: white;
+    font-size: 70px;
+}
+.fa-address-card{
+    color: pink;
+    min-width: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+.fa-key{
+    color: pink;
+    min-width: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+.input_container{
+    width: 60%;
+    border: 1px solid white;
+    background-color: white;
+}
+.input_container:focus{
+ 
+}

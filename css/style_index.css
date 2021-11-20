@@ -1,0 +1,129 @@
+body{
+    
+}
+/*
+p{
+    margin-bottom: 1.6em;
+}
+.container{ 
+    width:100%;
+    max-width: 1284px;
+    margin:0 auto;
+}
+*/
+ /* header{
+    position: fixed;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px #de3c82f6;
+    left: -3%;
+    top: 0;
+    width: 106%;
+} */
+/* header a{
+    color:rgb(3, 3, 3);
+    text-decoration: none;
+}
+.logo-nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    flex-wrap, para cuando un elemento que no tiene tamaño para estar al lado de otro, entonces pasa para abajo
+}*/
+/* .about_us{
+    
+    width: 100%;
+    height: 550px;
+}
+.about_us ul li{
+    width: 500px;
+    display: inline-block;
+}
+.about_ustxt{
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 10%;
+    font-size: 15px;
+    border-top: 3px solid #de3c82f3;
+    border-bottom:3px solid #de3c82f3;
+    
+}
+.about_us ul li img{
+    margin-top: 3%;
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    border: 3px solid #de3c82f3;
+}
+
+.about_us ul li p{
+    display: block;
+    padding:0rem 1.4rem ;
+}
+ .navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.navigation ul li{
+    display: inline-block;
+}
+.navigation ul li a{
+    display: block;
+    padding: 0rem 1.4rem;
+ 
+}  */
+p{
+    text-align: justify;
+}
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-trak{
+    background-color: white;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(165, 6, 99, 0.563);
+    border-radius: 20px;
+}
+
+
+
+.workers div{
+    padding: 10px;
+
+}
+figure{
+    /* position: relative; */
+}
+
+.text_worker{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.74);
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+    padding: 15px;
+    color: red;
+    text-align: center;
+
+}
+/* .subtitle{
+    border-bottom: 3px solid rgb(165, 6, 99);
+    width: 30%;
+    left:50%;
+    
+} */
+/* .subtitle{
+    text-align:center; */
+    .subtitle{
+        display: inline-block;
+        border-bottom: 2px solid rgb(196, 26, 105);
+        text-align: center;
+        justify-content: center;
+    }
+.reserva_btn{
+    background-color: rgba(196, 26, 105, 0.542);
+}
