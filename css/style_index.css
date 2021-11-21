@@ -161,6 +161,7 @@ p{
     background-color: rgba(94, 4, 46, 0.657);
     text-align: center;
     transition: all 300ms ease;
+    color: #f3035f9f;
 }
 .footer .group1 .redes a:hover{
     color: rgba(94, 4, 46, 0.657);
@@ -188,4 +189,25 @@ p{
     #menuNavegacion ul li a{
         margin-left: 5px;
     }
+}
+
+#slider h1{
+    -webkit-text-fill-color:rgb(255, 255, 255);
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color:rgba(94, 4, 46, 0.753);
+}
+#slider p{
+    -webkit-text-fill-color:rgba(94, 4, 46, 0.664);
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color:rgba(126, 25, 112, 0.842);
+}
+.btn-prev{
+    -webkit-text-fill-color:rgba(94, 4, 46, 0.664);
+    -webkit-text-stroke: 3px;
+    -webkit-text-stroke-color:rgba(126, 25, 112, 0.842);
+} 
+.btn-next{
+    -webkit-text-fill-color:rgba(94, 4, 46, 0.664);
+    -webkit-text-stroke: 3px;
+    -webkit-text-stroke-color:rgba(126, 25, 112, 0.842);
 }
