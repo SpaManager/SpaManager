@@ -5212,7 +5212,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: pink;
+  color: rgba(94, 4, 46, 1);
   background-color: white;
   border: 1px solid rgba(94, 4, 46, 0.3);
 }
@@ -5251,7 +5251,7 @@ input[type="button"].btn-block {
 }
 
 .page-item.disabled .page-link {
-  color: pink;
+  color: rgba(94, 4, 46, 0.5);
   pointer-events: none;
   cursor: auto;
   background-color: #FFF;
