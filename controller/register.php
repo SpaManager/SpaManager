@@ -1,3 +1,7 @@
+<?php
+    require_once "conexion.php";
+    require_once "metodosCrud.php";
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,7 @@
     <title>Registro</title>
 </head>
 <body>
+    <form action="Cliente.php" method="post">
     <div class="box">
         <h1>Registro</h1>
         <div class="text">
@@ -20,10 +25,6 @@
             <i class="fas fa-id-card"></i>
             <input type="text" placeholder="Cedula" name="id">
             
-        </div>
-        <div class="text">
-            <i class="fas fa-map-marker-alt"></i>
-            <input type="text" placeholder="Dirección" name="direction">
         </div>
         <div class="text">
             <i class="fas fa-phone-alt"></i>
@@ -38,5 +39,7 @@
         </div>
         <input class="button" type="button" name="register" value="Registrar">
     </div>
+    </form>
+    
 </body>
 </html>
