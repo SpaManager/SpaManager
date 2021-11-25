@@ -39,9 +39,11 @@
           </ul>
         </li>
       
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
+        <li><a class="app-menu__item" href="../html/reservations.html"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
         
-        <li><a class="app-menu__item" href="docs.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
+        <li><a class="app-menu__item" href="../html/reservations.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
+        
+        <li><a class="app-menu__item" href="../index.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Volver al Inicio</span></a></li>
       </ul>
     </aside>
     <main class="app-content">
@@ -127,10 +129,33 @@
                       <div class="btn-group">
                       
                       <a href="admin_customer_update.php?id_cliente=<?php echo $key['id_cliente']; ?>"><div class="btn btn-outline-warning" data-bs-toggle="modal"><i class="fas fa-pen"></i></div></a>
+                      
+                      <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalUpdate<?php echo $key['documento_cliente']; ?>"><i class="fas fa-trash-alt"></i></div>
 
-                        <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          <i class="fas fa-trash-alt"></i>
-                          </div>
+    <div class="modal fade" id="modalUpdate<?php echo $key['documento_cliente']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title" id="modalTitle">ADVERTENCIA</h5>
+                </div>
+                    <div class="container mt-3">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                
+                                    <p>Estas seguro que deseas eliminar este registro? (Se eliminara el usuario tambien)</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <a href="admin_customer_delete.php?documento_cliente=<?php echo $key['documento_cliente']; ?>"><div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalUpdate">Si</div></a>
+                            <button type="button" class="btn btn-primary float-left" data-bs-dismiss="modal">No</button>
+
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
                       </div>
 
                       </td>

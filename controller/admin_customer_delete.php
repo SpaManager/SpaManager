@@ -1,17 +1,13 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<?php 
+
+$documento_cliente=$_GET['documento_cliente'];
+require_once "conexion.php";
+require_once "admin_customer_crud.php";
+
+$obj = new methods();
+if($obj->deleteInfo($documento_cliente)==1 && $obj->deleteInfoU($documento_cliente)==1){
+    header("location:admin_customer.php");
+}else{
+    echo "Hubo un error al Eliminar";
+}
+?>

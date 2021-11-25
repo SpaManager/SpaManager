@@ -31,5 +31,20 @@ class methods{
         
         return $result=mysqli_query($conexion,$sql);
     }
+
+    public function deleteInfoU($documento_cliente){
+        $c = new connect();
+        $conexion = $c->conexion();
+        $sql2 = "DELETE FROM usuarios WHERE id_usuario='$documento_cliente'";
+        return $result2=mysqli_query($conexion,$sql2);
+    }
+
+    public function deleteInfo($documento_cliente){
+        $c = new connect();
+        $conexion = $c->conexion();
+        $sql = "DELETE FROM clientes WHERE documento_cliente='$documento_cliente'";
+        return $result=mysqli_query($conexion,$sql);
+    }
+    
     }
 ?>

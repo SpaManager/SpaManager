@@ -111,6 +111,14 @@ p{
     background-color: rgba(94, 4, 46, 0.856);
     transition: all 350ms ease-out;
 }
+.reserva-btn2{
+    background-color: rgba(94, 4, 46, 0.657);
+    margin-left: 500px;
+}
+.reserva-btn2:hover{
+    background-color: rgba(94, 4, 46, 0.856);
+    transition: all 350ms ease-out;
+}
 
 .footer{
     width: 100%;
