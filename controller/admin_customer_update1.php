@@ -13,7 +13,7 @@ $info=array($id_cliente,
             );
 
 $obj = new methods();
-if($obj->updateInfo($info)==1){
+if($obj->updateInfoC($info)==1){
     header("location:admin_customer.php");
 }else{
     echo "Hubo un error al Actualizar";

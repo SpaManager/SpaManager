@@ -3,15 +3,14 @@
     require_once "admin_customer_crud.php";
     ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <title>Panel de administrador</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../images/logo_ico.png">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
-    <script src="https://kit.fontawesome.com/12fc8d1c07.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
   <body class="app sidebar-mini">
@@ -29,42 +28,39 @@
         </div>
       </div>
       <ul class="app-menu">
-        <li><a class="app-menu__item" href="../html/admin.html"><i class="app-menu__icon fas fa-chart-line"></i><span class="app-menu__label">Estadísticas</span></a></li>
+        <li><a class="app-menu__item" href="../html/admin.html"><i class="app-menu__icon fas fa-chart-line"></i><span class="app-menu__label">Estadisticas</span></a></li>
         
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="../controller/admin_employee.php" rel="noopener"><i class="icon fas fa-handshake"></i>Empleados</a></li>
-            <li><a class="treeview-item active" href="../html/admin_customer.html"><i class="icon fa fa-users"></i>Clientes</a></li>
-            
-          </ul>
-        </li>
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a class="treeview-item active" href="../controller/admin_customer.php" rel="noopener"><i class="icon fas fa-handshake"></i>Empleados</a></li>
+              <li><a class="treeview-item" href="../controller/admin_customer.php"><i class="icon fa fa-users"></i>Clientes</a></li>
+            </ul>
+          </li>   
       
-        <li><a class="app-menu__item" href="../controller/reservations.php"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
+        <li><a class="app-menu__item" href="../controller/admin_reservations.php"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
         
-        <li><a class="app-menu__item" href="../controller/reservations_history.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
-        
-        <li><a class="app-menu__item" href="../index.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Volver al Inicio</span></a></li>
+        <li><a class="app-menu__item" href="docs.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
       </ul>
     </aside>
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-users"></i> Clientes</h1>
+          <h1><i class="fas fa-handshake"></i> Empleados</h1>
         </div>
-        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalInsert"><i class="fas fa-user-plus"></i></button>
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalInsert"><i class="fas fa-user-plus"></i> Añadir Empleado</button>
       </div>
 
-    <div class="modal fade" id="modalInsert" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+      <div class="modal fade" id="modalInsert" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">
-                    <h5 class="modal-title" id="modalTitle">Añadir Cliente</h5>
+                    <h5 class="modal-title" id="modalTitle">Añadir Empleado</h5>
                 </div>
                     <div class="container mt-3">
                         <div class="row justify-content-center">
                             <div class="col-md-10">
                                 
-                                    <form class="p-4 needs-validation" method="post" novalidate action="admin_customer_insert.php">
+                                    <form class="p-4 needs-validation" method="post" novalidate action="admin_employee_insert.php">
                                     <div class="mb-3">
                                         <label for="nombre" class="form-label">N° Documento</label>
                                         <input type="text" class="form-control" name="id_usuario" required>
@@ -72,14 +68,14 @@
                                         <div class="invalid-feedback">Complete los datos solicitados.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="cedula" class="form-label">Nombre Cliente</label>
-                                        <input type="text" class="form-control" name="nombre_cliente" required>
+                                        <label for="cedula" class="form-label">Nombre Empleado</label>
+                                        <input type="text" class="form-control" name="nombre_empleado" required>
                                         <div class="valid-feedback">Datos correctos</div>
                                         <div class="invalid-feedback">Complete los datos solicitados.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="telephone" class="form-label">Telefono del Cliente</label>
-                                        <input type="text" class="form-control" name="telefono_cliente" required>
+                                        <label for="telephone" class="form-label">Telefono del Empleado</label>
+                                        <input type="text" class="form-control" name="telefono_empleado" required>
                                         <div class="valid-feedback">Datos correctos</div>
                                         <div class="invalid-feedback">Complete los datos solicitados.</div>
                                     </div>
@@ -114,24 +110,24 @@
                   <tbody>
                       <?php
                       $obj= new methods();
-                      $sql="SELECT id_cliente,documento_cliente,nombre_cliente,telefono_cliente FROM clientes";
+                      $sql="SELECT id_empleado,documento_empleado,nombre_empleado,telefono_empleado FROM empleados";
                       $datos=$obj->showInfo($sql);
                       
                       foreach ($datos as $key){
                       ?>
                     <tr>
-                      <td><?php echo $key['documento_cliente']; ?></td>
-                      <td><?php echo $key['nombre_cliente']; ?></td>
-                      <td><?php echo $key['telefono_cliente']; ?></td>
+                      <td><?php echo $key['documento_empleado']; ?></td>
+                      <td><?php echo $key['nombre_empleado']; ?></td>
+                      <td><?php echo $key['telefono_empleado']; ?></td>
                       <td>
 
                       <div class="btn-group">
                       
-                      <a href="admin_customer_update.php?id_cliente=<?php echo $key['id_cliente']; ?>"><div class="btn btn-outline-warning" data-bs-toggle="modal"><i class="fas fa-pen"></i></div></a>
+                      <a href="admin_customer_update.php?id_cliente=<?php echo $key['id_empleado']; ?>"><div class="btn btn-outline-warning" data-bs-toggle="modal"><i class="fas fa-pen"></i></div></a>
                       
-                      <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalUpdate<?php echo $key['documento_cliente']; ?>"><i class="fas fa-trash-alt"></i></div>
+                      <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalUpdate<?php echo $key['documento_empleado']; ?>"><i class="fas fa-trash-alt"></i></div>
 
-    <div class="modal fade" id="modalUpdate<?php echo $key['documento_cliente']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal fade" id="modalUpdate<?php echo $key['documento_empleado']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">
@@ -145,7 +141,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                        <a href="admin_customer_delete.php?documento_cliente=<?php echo $key['documento_cliente']; ?>"><div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalUpdate">Si</div></a>
+                        <a href="admin_customer_delete.php?documento_cliente=<?php echo $key['documento_empleado']; ?>"><div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalUpdate">Si</div></a>
                             <button type="button" class="btn btn-primary float-left" data-bs-dismiss="modal">No</button>
 
                         </div>
@@ -195,28 +191,5 @@
       }
     </script>
     <script src="https://kit.fontawesome.com/cca4c6ac96.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script>
-      
-    (function () {
-    'use strict'
-
-    
-    var forms = document.querySelectorAll('.needs-validation')
-
-  
-    Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-        }, false)
-        })
-    })()
-    </script>
   </body>
 </html>

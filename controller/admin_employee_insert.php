@@ -5,17 +5,17 @@ require_once "admin_customer_crud.php";
 
 $id_usuario = $_POST['id_usuario'];
 $contraseña = "ABC123";
-$nombre_cliente=$_POST['nombre_cliente'];
-$telefono_cliente=$_POST['telefono_cliente'];
+$nombre_empleado=$_POST['nombre_empleado'];
+$telefono_empleado=$_POST['telefono_empleado'];
 
 $info=array($id_usuario,
             $contraseña,
-            $nombre_cliente,
-            $telefono_cliente            
+            $nombre_empleado,
+            $telefono_empleado            
             );
 $obj = new methods();
-if($obj->insertInfoUC($info)==1 && $obj->insertInfoC($info)==1){
-    header("location:admin_customer.php");
+if($obj->insertInfoUE($info)==1 && $obj->insertInfoE($info)==1){
+    header("location:admin_employee.php");
     ?>
     <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         ¡Registro realizado exisotsamente!
