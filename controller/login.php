@@ -10,22 +10,24 @@
     <title>Iniciar Sesión</title>
 </head>
 <body>
+    <form action="login1.php" method="post">
     <div class="box">
         <h1>Iniciar Sesión</h1>
         <div class="text">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Ingrese su cédula" name="id">
+            <input type='text' placeholder='Ingrese su cédula' name='id_usuario'>
         </div>
         <div class="text">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Ingrese su contraseña" name="password">
+            <input type="password" placeholder="Ingrese su contraseña" name="contrasena_user" required="">
             
         </div>
         <div class="text2">
             <a href="#">¿Olvidaste tu contraseña?</a>
             <a href="../html/register.html">Crear nueva cuenta</a>
         </div>
-        <a href="../html/admin.html"><input class="button" type="button" name="iniciar" value="Iniciar"></a>
-    </div>
+        <button class="button" type="submit" name="iniciar" value="Iniciar">Iniciar
+</button>
+    </form>
 </body>
 </html>

@@ -1,6 +1,17 @@
 <?php
     require_once "conexion.php";
-    require_once "admin_customer_crud.php";
+    require_once "admin_crud.php";
+    session_start();
+    $id_usuario = $_SESSION['id_usuario'];
+    if(!isset($id_usuario)){
+      header("location:login.php");
+    }
+    $obj= new methods();
+    $sql="SELECT nombre_empleado FROM empleados WHERE documento_empleado=$id_usuario;";
+    $datos=$obj->showInfo($sql);                  
+      foreach ($datos as $key){
+
+    ?>
     ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,26 +35,30 @@
     <aside class="app-sidebar">
       <div class="app-sidebar__user">
         <div>
-          <p class="app-sidebar__user-name">Santiago Ospina</p>
+        <p class="app-sidebar__user-name"><?php echo $key['nombre_empleado']?></p>
           <p class="app-sidebar__user-designation">Administrador</p>
         </div>
       </div>
+      <?php
+      }
+      ?>
       <ul class="app-menu">
-        <li><a class="app-menu__item" href="../html/admin.html"><i class="app-menu__icon fas fa-chart-line"></i><span class="app-menu__label">Estadísticas</span></a></li>
+        <li><a class="app-menu__item" href="admin.php"><i class="app-menu__icon fas fa-chart-line"></i><span class="app-menu__label">Estadísticas</span></a></li>
         
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="../controller/admin_employee.php" rel="noopener"><i class="icon fas fa-handshake"></i>Empleados</a></li>
-            <li><a class="treeview-item active" href="../html/admin_customer.html"><i class="icon fa fa-users"></i>Clientes</a></li>
+            <li><a class="treeview-item" href="admin_employee.php" rel="noopener"><i class="icon fas fa-handshake"></i>Empleados</a></li>
+            <li><a class="treeview-item active" href="#"><i class="icon fa fa-users"></i>Clientes</a></li>
             
           </ul>
         </li>
       
-        <li><a class="app-menu__item" href="../controller/reservations.php"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
+        <li><a class="app-menu__item" href="admin_reservations.php"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
         
-        <li><a class="app-menu__item" href="../controller/reservations_history.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
+        <li><a class="app-menu__item" href="admin_reservations_history.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
         
         <li><a class="app-menu__item" href="../index.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Volver al Inicio</span></a></li>
+        <li><a class="app-menu__item" href="close_session.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Cerrar sesion</span></a></li>
       </ul>
     </aside>
     <main class="app-content">
@@ -51,7 +66,7 @@
         <div>
           <h1><i class="fa fa-users"></i> Clientes</h1>
         </div>
-        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalInsert"><i class="fas fa-user-plus"></i></button>
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalInsert"><i class="fas fa-user-plus"></i> Añadir Cliente</button>
       </div>
 
     <div class="modal fade" id="modalInsert" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
@@ -129,9 +144,9 @@
                       
                       <a href="admin_customer_update.php?id_cliente=<?php echo $key['id_cliente']; ?>"><div class="btn btn-outline-warning" data-bs-toggle="modal"><i class="fas fa-pen"></i></div></a>
                       
-                      <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalUpdate<?php echo $key['documento_cliente']; ?>"><i class="fas fa-trash-alt"></i></div>
+                      <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete<?php echo $key['documento_cliente']; ?>"><i class="fas fa-trash-alt"></i></div>
 
-    <div class="modal fade" id="modalUpdate<?php echo $key['documento_cliente']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal fade" id="modalDelete<?php echo $key['documento_cliente']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">

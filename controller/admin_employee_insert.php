@@ -1,7 +1,7 @@
 <?php
 
 require_once "conexion.php";
-require_once "admin_customer_crud.php";
+require_once "admin_crud.php";
 
 $id_usuario = $_POST['id_usuario'];
 $contraseña = "ABC123";

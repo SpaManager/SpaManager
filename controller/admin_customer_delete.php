@@ -2,7 +2,7 @@
 
 $documento_cliente=$_GET['documento_cliente'];
 require_once "conexion.php";
-require_once "admin_customer_crud.php";
+require_once "admin_crud.php";
 
 $obj = new methods();
 if($obj->deleteInfoC($documento_cliente)==1 && $obj->deleteInfoUC($documento_cliente)==1){

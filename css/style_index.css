@@ -185,6 +185,28 @@ p{
     font-size: 15px;
 }
 
+.group3 .box3 a{
+    color: rgba(94, 4, 46, 0.657);
+    text-decoration: none;
+}
+.group3 .redes2 a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: white;
+    margin-right: 10px;
+    background-color: rgba(94, 4, 46, 0.657);
+    text-align: center; 
+    transition: all 300ms ease;
+    color: #ffffff9f;
+    float: right;
+}
+.group3 .redes2 a:hover{
+    color: rgba(94, 4, 46, 0.657);
+}
+
 @media screen and (max-width: 800px){
     .footer .group1{
         width: 80%;

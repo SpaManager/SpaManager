@@ -1,7 +1,7 @@
 <?php
 
 require_once "conexion.php";
-require_once "admin_customer_crud.php";
+require_once "admin_crud.php";
 
 $id_cliente=$_POST['id_cliente'];
 $nombre_cliente=$_POST['nombre_cliente'];
@@ -19,4 +19,3 @@ if($obj->updateInfoC($info)==1){
     echo "Hubo un error al Actualizar";
 }
 ?>
-</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/logo_ico.png">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <script src="https://kit.fontawesome.com/12fc8d1c07.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" type="text/css" href="../css/main.css"> 
+    <title>Editar Datos de la Reserva</title>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Editar datos de la Reserva:
+                    </div>
+                    <form class="p-4 needs-validation" method="post" novalidate action="admin_customer_insert.php">
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha</label>
+                            <input type="text" class="form-control" name="id_usuario" id="demoDate"  required>
+                            <div class="valid-feedback">Datos correctos</div>
+                            <div class="invalid-feedback">Complete los datos solicitados.</div>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="mb-3">
+                            <label for="hora" class="form-label">Hora</label>
+                            <select class="form-control" required>
+                              <option selected>Seleccione...</option>
+                              <option value="1">9:00 a.m</option>
+                              <option value="2">10:00 a.m</option>
+                              <option value="3">11:00 a.m</option>
+                              <option value="4">12:00 p.m</option>
+                              <option value="5">1:00 p.m</option>
+                              <option value="6">2:00 p.m</option>
+                              <option value="7">3:00 p.m</option>
+                              <option value="8">4:00 p.m</option>
+                              <option value="9">5:00 p.m</option>
+                            </select>
+                            <div class="valid-feedback">Datos correctos</div>
+                            <div class="invalid-feedback">Complete los datos solicitados.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="servicios" class="form-label">Servicio</label>
+                            <select class="form-control" multiple="" id="demoSelect" required>
+                              <optgroup label="Servicios">
+                                <option value="1">Manicure</option>
+                                <option value="2">Uñas semipermanentes</option>
+                                <option value="3">Uñas forradas</option>
+                                <option value="4">Uñas en acrilico</option>      
+                              </optgroup>                      
+                            </select>
+                            <div class="valid-feedback">Datos correctos</div>
+                            <div class="invalid-feedback">Complete los datos solicitados.</div>
+                        </div>  
+
+                        <div class="mb-3">
+                          <label for="empleados" class="form-label">Empleado</label>
+                          <select class="form-control" aria-label="Default select example" required>
+                            <option selected>Seleccione...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            
+                          </select>
+                          <div class="valid-feedback">Datos correctos</div>
+                          <div class="invalid-feedback">Complete los datos solicitados.</div>
+                      </div>            
+                                   
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary float-right">Enviar</button>
+                            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="../js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+    
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+      if(document.location.hostname == 'pratikborsadiya.in') {
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
+      }
+    </script>
+    <script src="https://kit.fontawesome.com/cca4c6ac96.js" crossorigin="anonymous"></script>
+    <script>
+      
+    (function () {
+    'use strict'
+
+    
+    var forms = document.querySelectorAll('.needs-validation')
+
+  
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+        })
+    })()
+    </script>
+    <script type="text/javascript" src="../js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/tpicker.js"></script>
+    <script type="text/javascript" src="../js/plugins/select2.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../js/plugins/dropzone.js"></script>
+    <script type="text/javascript">
+      $('#sl').on('click', function(){
+      	$('#tl').loadingBtn();
+      	$('#tb').loadingBtn({ text : "Signing In"});
+      });
+      
+      $('#el').on('click', function(){
+      	$('#tl').loadingBtnComplete();
+      	$('#tb').loadingBtnComplete({ html : "Sign In"});
+      });
+      
+      $('#demoDate').datepicker({
+      	format: "dd/mm/yyyy",
+      	autoclose: true,
+      	todayHighlight: true
+      });
+      
+      $('#demoSelect').select2();
+    </script>
+</body>
+</html>
