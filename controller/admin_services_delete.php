@@ -1,12 +1,12 @@
 <?php 
 
-$id_usuario=$_GET['id_usuario'];
+$id_servicio=$_GET['id_servicio'];
 require_once "../model/conexion.php";
 require_once "admin_crud.php";
 
 $obj = new methods();
-if($obj->deleteInfoC($id_usuario)==1){
-    header("location:../view/admin_customer.php");
+if($obj->deleteInfoS($id_servicio)==1){
+    header("location:../view/admin_services.php");
 }else{
     echo "Hubo un error al Eliminar";
 }

@@ -1,9 +1,9 @@
 <?php
-require_once "conexion.php";
+require_once "../model/conexion.php";
 $obj = new connect();
 $conexion=$obj->conexion();
-$id_empleado=$_GET['id_empleado'];
-$sql="SELECT id_empleado,documento_empleado,nombre_empleado,telefono_empleado FROM empleados WHERE id_empleado='$id_empleado'";
+$id_usuario=$_GET['id_usuario'];
+$sql="SELECT id_usuario,nombre_usuario,telefono_usuario FROM usuario WHERE id_usuario='$id_usuario'";
 $result=mysqli_query($conexion,$sql);
 $show=mysqli_fetch_row($result);
 
@@ -14,10 +14,10 @@ $show=mysqli_fetch_row($result);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/logo_ico.png">
+    <link rel="icon" href="images/logo_ico.png">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <script src="https://kit.fontawesome.com/12fc8d1c07.js" crossorigin="anonymous"></script> 
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
     
     <title>Editar Datos</title>
@@ -31,22 +31,22 @@ $show=mysqli_fetch_row($result);
                     <div class="card-header">
                         Editar datos:
                     </div>
-                    <form class="p-4 needs-validation" method="post" action="admin_employee_update1.php" novalidate>
+                    <form class="p-4 needs-validation" method="post" action="../controller/admin_employee_update1.php" novalidate>
                     <div class="mb-3">
-                        <input type="text" name="id_empleado" hidden="" value="<?php echo $show[0] ?>">
+                        <input type="text" name="id_usuario" hidden="" value="<?php echo $show[0] ?>">
 
                             <label for="nombre" class="form-label">Documento empleado</label>
-                            <input type="text" class="form-control" name="documento_empleado"   readonly required value="<?php echo $show[1]; ?>">
+                            <input type="text" class="form-control" name="id_usuario" readonly required value="<?php echo $show[0]; ?>">
                             
                         </div>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" name="nombre_empleado" required value="<?php echo $show[2]; ?>">
+                            <label for="nombre" class="form-label">Nombre Empleado</label>
+                            <input type="text" class="form-control" name="nombre_usuario" required value="<?php echo $show[1]; ?>">
                             
                         </div>
                         <div class="mb-3">
-                            <label for="cedula" class="form-label">Telefono</label>
-                            <input type="text" class="form-control" name="telefono_empleado" required value="<?php echo $show[3]; ?>">
+                            <label for="cedula" class="form-label">Telefono Empleado</label>
+                            <input type="text" class="form-control" name="telefono_usuario" required value="<?php echo $show[2]; ?>">
                             
                         </div>
                        

@@ -1,20 +1,22 @@
 <?php
 
-require_once "conexion.php";
+require_once "../model/conexion.php";
 require_once "admin_crud.php";
 
-$id_cliente=$_POST['id_cliente'];
-$nombre_cliente=$_POST['nombre_cliente'];
-$telefono_cliente=$_POST['telefono_cliente'];
+$id_usuario=$_POST['id_usuario'];
+$nombre_usuario=$_POST['nombre_usuario'];
+$correo_usuario=$_POST['correo_usuario'];
+$telefono_usuario=$_POST['telefono_usuario'];
 
-$info=array($id_cliente,
-            $nombre_cliente,
-            $telefono_cliente            
+$info=array($id_usuario,
+            $nombre_usuario,
+            $correo_usuario,
+            $telefono_usuario           
             );
 
 $obj = new methods();
 if($obj->updateInfoC($info)==1){
-    header("location:admin_customer.php");
+    header("location:../view/admin_customer.php");
 }else{
     echo "Hubo un error al Actualizar";
 }

@@ -1,12 +1,11 @@
 <?php 
-
-$documento_empleado=$_GET['documento_empleado'];
-require_once "conexion.php";
+require_once "../model/conexion.php";
 require_once "admin_crud.php";
+$id_usuario=$_GET['id_usuario'];
 
 $obj = new methods();
-if($obj->deleteInfoE($documento_empleado)==1 && $obj->deleteInfoUE($documento_empleado)==1){
-    header("location:admin_employee.php");
+if($obj->deleteInfoE($id_usuario)==1){
+    header("location:../view/admin_employee.php");
 }else{
     echo "Hubo un error al Eliminar";
 }

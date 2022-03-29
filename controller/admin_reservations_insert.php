@@ -1,21 +1,22 @@
 <?php
 
-require_once "conexion.php";
-require_once "admin_crud.php";
+require_once "../model/conexion.php";
+require_once "../controller/admin_crud.php";
 
-$id_usuario = $_POST['id_usuario'];
-$contrasena_user = "ABC123";
-$nombre_cliente=$_POST['nombre_cliente'];
-$telefono_cliente=$_POST['telefono_cliente'];
+$fecha_cita=$_POST['fecha_cita'];
+$hora_cita=$_POST['hora_cita'];
+$cliente_id=$_POST['cliente_id'];
+$empleado_id=$_POST['empleado_id'];
 
-$info=array($id_usuario,
-            $contrasena_user,
-            $nombre_cliente,
-            $telefono_cliente            
+
+$info=array($fecha_cita,
+            $hora_cita,
+            $cliente_id,
+            $empleado_id         
             );
 $obj = new methods();
-if($obj->insertInfoUC($info)==1 && $obj->insertInfoC($info)==1){
-    header("location:admin_customer.php");
+if($obj->insertInfoR($info)==1){
+    header("location:../view/admin_reservations.php");
     ?>
     <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         ¡Registro realizado exisotsamente!

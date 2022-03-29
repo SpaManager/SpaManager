@@ -1,21 +1,25 @@
 <?php
 
-require_once "conexion.php";
+require_once "../model/conexion.php";
 require_once "admin_crud.php";
 
 $id_usuario = $_POST['id_usuario'];
-$contrasena_user = "ABC123";
-$nombre_cliente=$_POST['nombre_cliente'];
-$telefono_cliente=$_POST['telefono_cliente'];
+$contrasena_usuario = "ABC123";
+$nombre_usuario=$_POST['nombre_usuario'];
+$correo_usuario=$_POST['correo_usuario'];
+$telefono_usuario=$_POST['telefono_usuario'];
+$rol_id=$_POST['rol_id'];
 
 $info=array($id_usuario,
-            $contrasena_user,
-            $nombre_cliente,
-            $telefono_cliente            
+            $contrasena_usuario,
+            $nombre_usuario,
+            $correo_usuario,
+            $telefono_usuario,
+            $rol_id           
             );
 $obj = new methods();
-if($obj->insertInfoUC($info)==1 && $obj->insertInfoC($info)==1){
-    header("location:admin_customer.php");
+if($obj->insertInfoC($info)==1){
+    header("location:../view/admin_customer.php");
     ?>
     <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         ¡Registro realizado exisotsamente!

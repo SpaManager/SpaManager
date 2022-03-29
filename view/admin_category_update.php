@@ -1,9 +1,9 @@
 <?php
-require_once "conexion.php";
+require_once "../model/conexion.php";
 $obj = new connect();
 $conexion=$obj->conexion();
-$id_cliente=$_GET['id_cliente'];
-$sql="SELECT id_cliente,documento_cliente,nombre_cliente,telefono_cliente FROM clientes WHERE id_cliente='$id_cliente'";
+$id_categoria=$_GET['id_categoria'];
+$sql="SELECT id_categoria,nombre_categoria FROM categoria WHERE id_categoria='$id_categoria'";
 $result=mysqli_query($conexion,$sql);
 $show=mysqli_fetch_row($result);
 
@@ -14,10 +14,10 @@ $show=mysqli_fetch_row($result);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/logo_ico.png">
+    <link rel="icon" href="images/logo_ico.png">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <script src="https://kit.fontawesome.com/12fc8d1c07.js" crossorigin="anonymous"></script> 
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
     
     <title>Editar Datos</title>
@@ -31,28 +31,22 @@ $show=mysqli_fetch_row($result);
                     <div class="card-header">
                         Editar datos:
                     </div>
-                    <form class="p-4 needs-validation" method="post" action="admin_customer_update1.php" novalidate>
+                    <form class="p-4 needs-validation" method="post" action="../controller/admin_category_update1.php" novalidate>
                     <div class="mb-3">
-                        <input type="text" name="id_cliente" hidden="" value="<?php echo $show[0] ?>">
+                        <input type="text" name="id_categoria" hidden="" value="<?php echo $show[0] ?>">
 
-                            <label for="nombre" class="form-label">Documento Cliente</label>
-                            <input type="text" class="form-control" name="documento_cliente"   readonly required value="<?php echo $show[1]; ?>">
+                            <label for="nombre" class="form-label">Id de la categoria</label>
+                            <input type="text" class="form-control" name="id_categoria"   readonly required value="<?php echo $show[0]; ?>">
                             
                         </div>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" name="nombre_cliente" required value="<?php echo $show[2]; ?>">
-                            
-                        </div>
-                        <div class="mb-3">
-                            <label for="cedula" class="form-label">Telefono</label>
-                            <input type="text" class="form-control" id="cedula" name="telefono_cliente" required value="<?php echo $show[3]; ?>">
-                            
+                            <label for="nombre" class="form-label">Nombre de la categoria</label>
+                            <input type="text" class="form-control" name="nombre_categoria" required value="<?php echo $show[1]; ?>">
                         </div>
                        
                         <button type="submit" class="btn btn-primary">Enviar</button>
                         
-                        <a href="admin_customer.php" style="text-decoration:none; color:white;"><div class="btn btn-primary float-right">Volver</div></a>
+                        <a href="admin_category.php" style="text-decoration:none; color:white;"><div class="btn btn-primary float-right">Volver</div></a>
                     </form>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
-    require_once "conexion.php";
-    require_once "admin_crud.php";
+    require_once "../model/conexion.php";
+    require_once "../controller/admin_crud.php";
     
     session_start();
     $id_usuario = $_SESSION['id_usuario'];
@@ -15,12 +15,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../images/logo_ico.png">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="icon" href="images/logo_ico.png">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
   </head>
   <body class="app sidebar-mini">
-    <header class="app-header"><a class="app-header__logo" href="admin.html">Nails Room</a>
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="#">Nails Room</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     </header>
     <!-- Sidebar menu-->
@@ -29,13 +31,13 @@
       <div class="app-sidebar__user">
       <?php
           $obj= new methods();
-          $sql="SELECT nombre_empleado FROM empleados WHERE documento_empleado=$id_usuario;";
+          $sql="SELECT nombre_usuario,nombre_rol FROM usuario INNER JOIN rol ON usuario.rol_id=rol.id_rol WHERE id_usuario=$id_usuario;";
           $datos=$obj->showInfo($sql);                  
             foreach ($datos as $key){
               ?>
         <div>
-          <p class="app-sidebar__user-name"><?php echo $key['nombre_empleado']?></p>
-          <p class="app-sidebar__user-designation">Administrador</p>
+          <p class="app-sidebar__user-name"><?php echo $key['nombre_usuario']?></p>
+          <p class="app-sidebar__user-designation"><?php echo $key['nombre_rol']?></p>
           
         </div>
         <?php
@@ -55,10 +57,11 @@
         </li>
       
         <li><a class="app-menu__item" href="admin_reservations.php"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
-        
+        <li><a class="app-menu__item" href="admin_services.php"><i class="app-menu__icon fas fa-paint-brush"></i><span class="app-menu__label">Servicios</span></a></li>
+        <li><a class="app-menu__item" href="admin_category.php"><i class="app-menu__icon fab fa-elementor"></i><span class="app-menu__label">Categorias</span></a></li>
         <li><a class="app-menu__item" href="admin_reservations_history.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
-        <li><a class="app-menu__item" href="../index.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Volver al Inicio</span></a></li>
-        <li><a class="app-menu__item" href="close_session.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Cerrar sesion</span></a></li>
+        <li><a class="app-menu__item" href="../index.html"><i class="app-menu__icon fa fa-home"></i><span class="app-menu__label">Volver al Inicio</span></a></li>
+        <li><a class="app-menu__item" href="../controller/close_session.php"><i class="app-menu__icon fa fa-sign-out-alt"></i><span class="app-menu__label">Cerrar sesion</span></a></li>
       </ul>
     </aside>
     <main class="app-content">
@@ -71,6 +74,7 @@
       <?php
         $obj= new methods();
         $sql="SELECT * from showstatsc;";
+        // $sql "SELECT COUNT(*) AS total_clientes FROM clientes";
         $datos=$obj->showInfo($sql);
         
         foreach ($datos as $key){
@@ -80,7 +84,7 @@
           <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
               <h4>CLIENTES</h4>
-              <p><b><?php echo $key['total_clientes']; ?></b></p>
+              <p><b><?php echo $key['TOTAL_CLIENTES']; ?></b></p>
             </div>
           </div>
           <?php
@@ -96,7 +100,7 @@
           <div class="widget-small info coloured-icon"><i class=" icon fas fa-handshake"></i>
             <div class="info">
               <h4>EMPLEADOS</h4>
-              <p><b><?php echo $key['total_empleados']; ?></b></p>
+              <p><b><?php echo $key['TOTAL_EMPLEADOS']; ?></b></p>
             </div>
           </div>
           <?php
@@ -110,8 +114,8 @@
         <div class="col-md-6 col-lg-3">
           <div class="widget-small danger coloured-icon"><i class="icon fas fa-hand-sparkles"></i>
             <div class="info">
-              <h4>Servicios</h4>
-              <p><b><?php echo $key['total_citas']; ?></b></p>
+              <h4>SERVICIOS REALIZADOS</h4>
+              <p><b><?php echo $key['TOTAL_CITAS']; ?></b></p>
             </div>
           </div>
           <?php
@@ -139,14 +143,14 @@
       </div>
     </main>
     <!-- Essential javascripts for application to work-->
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="../js/plugins/pace.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
-    <script type="text/javascript" src="../js/plugins/chart.js"></script>
+    <script type="text/javascript" src="js/plugins/chart.js"></script>
     <script type="text/javascript">
       var data = {
       	labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
@@ -213,6 +217,7 @@
       	ga('send', 'pageview');
       }
     </script>
-    <script src="https://kit.fontawesome.com/cca4c6ac96.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/cca4c6ac96.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/989850f707.js" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -3,19 +3,11 @@
 require_once "../model/conexion.php";
 require_once "admin_crud.php";
 
-$id_usuario = $_POST['id_usuario'];
-$contrasena_usuario = "ABC123";
-$nombre_usuario=$_POST['nombre_usuario'];
-$telefono_usuario=$_POST['telefono_usuario'];
+$nombre_categoria=$_POST['nombre_categoria'];
 
-$info=array($id_usuario,
-            $contrasena_usuario,
-            $nombre_usuario,
-            $telefono_usuario            
-            );
 $obj = new methods();
-if($obj->insertInfoE($info)==1){
-    header("location:../view/admin_employee.php");
+if($obj->insertInfoCS($nombre_categoria)==1){
+    header("location:../view/admin_category.php");
     ?>
     <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         ¡Registro realizado exisotsamente!

@@ -1,6 +1,6 @@
 <?php
-    require_once "conexion.php";
-    require_once "admin_crud.php";
+    require_once "../model/conexion.php";
+    require_once "../controller/admin_crud.php";
 
     session_start();
     $id_usuario = $_SESSION['id_usuario'];
@@ -8,7 +8,7 @@
       header("location:login.php");
     }
     $obj= new methods();
-    $sql="SELECT nombre_empleado FROM empleados WHERE documento_empleado=$id_usuario;";
+    $sql="SELECT nombre_usuario,nombre_rol FROM usuario INNER JOIN rol ON usuario.rol_id=rol.id_rol WHERE id_usuario=$id_usuario;";
     $datos=$obj->showInfo($sql);                  
       foreach ($datos as $key){
 
@@ -20,13 +20,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../images/logo_ico.png">
+    <link rel="icon" href="images/logo_ico.png">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">Nails Room</a>
+    <header class="app-header"><a class="app-header__logo" href="#">Nails Room</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     </header>
     <!-- Sidebar menu-->
@@ -34,8 +34,8 @@
     <aside class="app-sidebar">
       <div class="app-sidebar__user">
         <div>
-          <p class="app-sidebar__user-name"><?php echo $key['nombre_empleado']?></p>
-          <p class="app-sidebar__user-designation">Administrador</p>
+          <p class="app-sidebar__user-name"><?php echo $key['nombre_usuario']?></p>
+          <p class="app-sidebar__user-designation"><?php echo $key['nombre_rol']?></p>
         </div>
       </div>
       <?php
@@ -52,10 +52,11 @@
           </li>   
       
         <li><a class="app-menu__item" href="admin_reservations.php"><i class="app-menu__icon far fa-calendar-check"></i><span class="app-menu__label">Reservas</span></a></li>
-        
-        <li><a class="app-menu__item" href="admin_reservations_history.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
-        <li><a class="app-menu__item" href="../index.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Volver al Inicio</span></a></li>
-        <li><a class="app-menu__item" href="close_session.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Cerrar sesion</span></a></li>
+        <li><a class="app-menu__item" href="admin_services.php"><i class="app-menu__icon fas fa-paint-brush"></i><span class="app-menu__label">Servicios</span></a></li>
+        <li><a class="app-menu__item" href="admin_category.php"><i class="app-menu__icon fab fa-elementor"></i><span class="app-menu__label">Categorias</span></a></li> 
+        <li><a class="app-menu__item" href="../controller/admin_reservations_history.php"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Registro de citas</span></a></li>
+        <li><a class="app-menu__item" href="../index.html"><i class="app-menu__icon fa fa-home"></i><span class="app-menu__label">Volver al Inicio</span></a></li>
+        <li><a class="app-menu__item" href="../controller/close_session.php"><i class="app-menu__icon fa fa-sign-out-alt"></i><span class="app-menu__label">Cerrar sesion</span></a></li>
       </ul>
     </aside>
     <main class="app-content">
@@ -76,7 +77,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10">
                                 
-                                    <form class="p-4 needs-validation" method="post" novalidate action="admin_employee_insert.php">
+                                    <form class="p-4 needs-validation" method="post" novalidate action="../controller/admin_employee_insert.php">
                                     <div class="mb-3">
                                         <label for="nombre" class="form-label">N° Documento</label>
                                         <input type="text" class="form-control" name="id_usuario" required>
@@ -85,13 +86,13 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="cedula" class="form-label">Nombre Empleado</label>
-                                        <input type="text" class="form-control" name="nombre_empleado" required>
+                                        <input type="text" class="form-control" name="nombre_usuario" required>
                                         <div class="valid-feedback">Datos correctos</div>
                                         <div class="invalid-feedback">Complete los datos solicitados.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="telephone" class="form-label">Telefono del Empleado</label>
-                                        <input type="text" class="form-control" name="telefono_empleado" required>
+                                        <input type="text" class="form-control" name="telefono_usuario" required>
                                         <div class="valid-feedback">Datos correctos</div>
                                         <div class="invalid-feedback">Complete los datos solicitados.</div>
                                     </div>
@@ -126,24 +127,24 @@
                   <tbody>
                       <?php
                       $obj= new methods();
-                      $sql="SELECT id_empleado,documento_empleado,nombre_empleado,telefono_empleado FROM empleados";
+                      $sql="SELECT id_usuario,nombre_usuario,telefono_usuario FROM usuario WHERE rol_id=2";
                       $datos=$obj->showInfo($sql);
                       
                       foreach ($datos as $key){
                       ?>
                     <tr>
-                      <td><?php echo $key['documento_empleado']; ?></td>
-                      <td><?php echo $key['nombre_empleado']; ?></td>
-                      <td><?php echo $key['telefono_empleado']; ?></td>
+                      <td><?php echo $key['id_usuario']; ?></td>
+                      <td><?php echo $key['nombre_usuario']; ?></td>
+                      <td><?php echo $key['telefono_usuario']; ?></td>
                       <td>
 
                       <div class="btn-group">
                       
-                      <a href="admin_employee_update.php?id_empleado=<?php echo $key['id_empleado']; ?>"><div class="btn btn-outline-warning" data-bs-toggle="modal"><i class="fas fa-pen"></i></div></a>
+                      <a href="admin_employee_update.php?id_usuario=<?php echo $key['id_usuario']; ?>"><div class="btn btn-outline-warning" data-bs-toggle="modal"><i class="fas fa-pen"></i></div></a>
                       
-                      <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalUpdate<?php echo $key['documento_empleado']; ?>"><i class="fas fa-trash-alt"></i></div>
+                      <div class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalUpdate<?php echo $key['id_usuario']; ?>"><i class="fas fa-trash-alt"></i></div>
 
-    <div class="modal fade" id="modalUpdate<?php echo $key['documento_empleado']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal fade" id="modalUpdate<?php echo $key['id_usuario']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">
@@ -153,11 +154,11 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10">
                                 
-                                    <p>Estas seguro que deseas eliminar este registro? (Se eliminara el usuario tambien)</p>
+                                    <p>Estas seguro que deseas eliminar este usuario?</p>
                             </div>
                         </div>
                         <div class="modal-footer">
-                        <a href="admin_employee_delete.php?documento_empleado=<?php echo $key['documento_empleado']; ?>"><div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalUpdate">Si</div></a>
+                        <a href="../controller/admin_employee_delete.php?id_usuario=<?php echo $key['id_usuario']; ?>"><div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalUpdate">Si</div></a>
                             <button type="button" class="btn btn-primary float-left" data-bs-dismiss="modal">No</button>
 
                         </div>
@@ -184,16 +185,16 @@
       </div>
     </main>
     <!-- Essential javascripts for application to work-->
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="../js/plugins/pace.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
     <!-- Data table plugin-->
-    <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
     <script type="text/javascript">
@@ -206,6 +207,28 @@
       	ga('send', 'pageview');
       }
     </script>
+    <script>
+      
+      (function () {
+      'use strict'
+  
+      
+      var forms = document.querySelectorAll('.needs-validation')
+  
+    
+      Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+              }
+  
+              form.classList.add('was-validated')
+          }, false)
+          })
+      })()
+      </script>
     <script src="https://kit.fontawesome.com/cca4c6ac96.js" crossorigin="anonymous"></script>
   </body>
 </html>
